@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
+import Login from "./Login";
+import Map from "./Map";
 
 class App extends React.Component {
   state = { currentPage: 'map' };
@@ -13,7 +15,12 @@ class App extends React.Component {
     return (
       <div>
         <Header changePage={(page) => this.changePage(page)} />
-        {this.state.currentPage}
+        {{
+        login: <Login />,
+        map: <Map />
+        }
+     [this.state.currentPage]
+}
       </div>
     );
   }
