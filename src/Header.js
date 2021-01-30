@@ -20,9 +20,6 @@ class Header extends React.Component {
           <Button onClick={() => this.navigateTo('profile')} color="inherit">
             Profile
           </Button>
-          <Button onClick={() => this.navigateTo('registration')} color="inherit">
-            Registration
-          </Button>
         </Toolbar>
       </AppBar>
     );

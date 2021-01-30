@@ -1,16 +1,21 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
-import Login from "./Login";
-import Map from "./Map";
-import Profile from "./Profile";
-import Registration from "./Registration"
+import { LoginWithAuth } from "./Login";
+import { Map } from "./Map";
+import { withAuth } from "./AuthContext";
+import { ProfileWithAuth } from "./Profile";
+
 
 class App extends React.Component {
   state = { currentPage: 'map' };
 
   changePage = (page) => {
-    this.setState({ currentPage: page });
+    if (this.props.isLoggedIn) {
+      this.setState({ currentPage: page });
+    } else {
+      this.setState({ currentPage: "login"});
+    }
   };
 
   render() {
@@ -19,16 +24,15 @@ class App extends React.Component {
         <Header changePage={(page) => this.changePage(page)} />
         {
         {
-        login: <Login />,
-        map: <Map />,
-        profile: <Profile />,
-        registration: <Registration />
+        login: (props) => <LoginWithAuth {...props} />,
+        map: (props) =>  <Map {...props} />,
+        profile: (props) =>  <ProfileWithAuth {...props} />,
         }
-     [this.state.currentPage]
+        [this.state.currentPage]({ navigate: this.changePage })
 }
       </div>
     );
   }
 }
 
-export default App;
+export default withAuth(App);
