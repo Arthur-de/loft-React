@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import mapboxgl from 'mapbox-gl';
-
+import mapboxgl from 'mapbox-gl'
 
 export class Map extends Component {
   map = null;
@@ -8,7 +7,7 @@ export class Map extends Component {
 
   componentDidMount() {
     mapboxgl.accessToken =
-      "pk.eyJ1IjoiYXJ0eXciLCJhIjoiY2trZ3Jqdm4xMTZnYjJubW4zb2Q4MGRzMCJ9.SzSoVzR_p3lXN7ebg4f9mQ";
+    "pk.eyJ1IjoiYXJ0eXciLCJhIjoiY2trZ3Jqdm4xMTZnYjJubW4zb2Q4MGRzMCJ9.SzSoVzR_p3lXN7ebg4f9mQ";
     this.map = new mapboxgl.Map({
       container: this.mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v9",
@@ -24,7 +23,7 @@ export class Map extends Component {
   render() {
     return (
         <div className="map-wrapper">
-          <div data-testid="map" className="map" ref={this.mapContainer} />
+          <div className="map" ref={this.mapContainer} />
         </div>
     );
   }
